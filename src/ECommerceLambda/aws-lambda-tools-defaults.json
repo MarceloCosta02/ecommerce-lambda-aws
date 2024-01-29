@@ -5,10 +5,11 @@
     "dotnet lambda help",
     "All the command line options for the Lambda command can be specified in this file."
   ],
-  "profile": "",
-  "region": "",
   "configuration": "Release",
-  "s3-prefix": "ECommerceLambda/",
-  "template": "serverless.template",
-  "template-parameters": ""
+  "function-name": "ECommerceApi",
+  "function-memory-size": 256,
+  "function-runtime": "dotnet6",
+  "function-timeout": 30,
+  "function-handler": "ECommerceLambda",
+  "function-url-enable":  true
 }
