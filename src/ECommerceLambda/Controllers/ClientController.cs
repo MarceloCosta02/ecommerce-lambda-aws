@@ -1,3 +1,5 @@
+using ECommerceLambda.Interfaces;
+using ECommerceLambda.Model;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerceLambda.Controllers;
@@ -6,16 +8,42 @@ namespace ECommerceLambda.Controllers;
 [Route("[controller]")]
 public class ClientController : ControllerBase
 {
-    private readonly ILogger<ClientController> _logger;
+    private readonly IClientRepository _repository;
 
-    public ClientController(ILogger<ClientController> logger)
+    public ClientController(IClientRepository repository)
     {
-        _logger = logger;
+        _repository = repository;
     }
 
-    [HttpGet]
-    public IActionResult Index()
+    [HttpGet("{document}")]
+    public async Task<IActionResult> GetByDocument(string document)
     {
+        var client = await _repository.GetByDocument(document);
+
+        return Ok(client);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Create(Client client)
+    {
+        await _repository.Add(client);
+
+        return Ok();
+    }
+
+    [HttpPut]
+    public async Task<IActionResult> Update(Client client)
+    {
+        await _repository.Update(client);
+
+        return Ok();
+    }
+
+    [HttpDelete("{document}")]
+    public async Task<IActionResult> Delete(string document)
+    {
+        await _repository.Remove(document);
+
         return Ok();
     }
 }
