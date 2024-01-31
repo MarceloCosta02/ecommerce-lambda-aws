@@ -1,6 +1,6 @@
-﻿using ECommerceLambda.Model;
+﻿using ECommerceLambda.Models;
 
-namespace ECommerceLambda.Interfaces;
+namespace ECommerceLambda.Interfaces.Repositories;
 
 public interface IClientRepository
 {

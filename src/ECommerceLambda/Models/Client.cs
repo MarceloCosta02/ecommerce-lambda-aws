@@ -1,6 +1,6 @@
 ﻿using Amazon.DynamoDBv2.DataModel;
 
-namespace ECommerceLambda.Model;
+namespace ECommerceLambda.Models;
 
 [DynamoDBTable("client")]
 public class Client

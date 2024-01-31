@@ -1,7 +1,10 @@
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
-using ECommerceLambda.Interfaces;
+using Amazon.SQS;
+using ECommerceLambda.Interfaces.Repositories;
+using ECommerceLambda.Interfaces.Services;
 using ECommerceLambda.Repositories;
+using ECommerceLambda.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +18,9 @@ builder.Services.AddAWSLambdaHosting(LambdaEventSource.HttpApi);
 builder.Services.AddScoped<IAmazonDynamoDB, AmazonDynamoDBClient>();
 builder.Services.AddScoped<IDynamoDBContext, DynamoDBContext>();
 builder.Services.AddScoped<IClientRepository, ClientRepository>();
+
+builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IAmazonSQS, AmazonSQSClient>();
 
 var app = builder.Build();
 
