@@ -1,6 +1,6 @@
 ﻿using Amazon.DynamoDBv2.DataModel;
 using ECommerceLambda.Interfaces.Repositories;
-using ECommerceLambda.Models;
+using ECommerceLambda.Domain.Models;
 
 namespace ECommerceLambda.Repositories;
 

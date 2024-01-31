@@ -1,5 +1,5 @@
 using ECommerceLambda.Interfaces.Repositories;
-using ECommerceLambda.Models;
+using ECommerceLambda.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerceLambda.Controllers;

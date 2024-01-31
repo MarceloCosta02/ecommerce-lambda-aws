@@ -1,6 +1,6 @@
-﻿using ECommerceLambda.Enums;
+﻿using ECommerceLambda.Domain.Enums;
 
-namespace ECommerceLambda.Models;
+namespace ECommerceLambda.Domain.Models;
 
 public class Order
 {

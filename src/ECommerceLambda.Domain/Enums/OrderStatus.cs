@@ -1,4 +1,4 @@
-﻿namespace ECommerceLambda.Enums;
+﻿namespace ECommerceLambda.Domain.Enums;
 
 public enum OrderStatus
 {
