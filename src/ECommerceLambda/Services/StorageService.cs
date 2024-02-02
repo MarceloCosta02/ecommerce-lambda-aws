@@ -15,27 +15,19 @@ public class StorageService : IStorageService
     }
     public async Task<byte[]> Download(string bucketName, string fileKey)
     {
-        MemoryStream? stream = null;
-
-        var getObjectRequest = new GetObjectRequest
+        using (var response = await _clientS3.GetObjectAsync(bucketName, fileKey))
         {
-            BucketName = bucketName,
-            Key = fileKey
-        };
+            if (response.HttpStatusCode != HttpStatusCode.OK)
+            {
+                throw new FileNotFoundException($"O arquivo {fileKey} não foi localizado");
+            }
 
-        var response = await _clientS3.GetObjectAsync(getObjectRequest);
-
-        if (response.HttpStatusCode is HttpStatusCode.OK)
-        {
-            stream = new MemoryStream();
-            await response.ResponseStream.CopyToAsync(stream);
+            using (var memoryStream = new MemoryStream())
+            {
+                await response.ResponseStream.CopyToAsync(memoryStream);
+                return memoryStream.ToArray();
+            }
         }
-
-        if (stream is null)
-        {
-            throw new FileNotFoundException($"O arquivo {fileKey} não foi localizado");
-        }
-
-        return stream.ToArray();
     }
+
 }

@@ -22,7 +22,7 @@
     "function-subnets"      : "",
     "function-security-groups" : "",
     "tracing-mode"             : "PassThrough",
-    "environment-variables"    : "\"PEDIDO_CRIADO_QUEUE\"=\"https://sqs.sa-east-1.amazonaws.com/984395461671/pedido-criado-sqs\"",
+    "environment-variables"    : "\"INVOICES_BUCKET_NAME\"=\"notas-fiscais-emitidas-marcelo\";\"PEDIDO_CRIADO_QUEUE\"=\"https://sqs.sa-east-1.amazonaws.com/984395461671/pedido-criado-sqs\"",
     "image-tag"                : "",
     "function-description"     : ""
 }

@@ -17,7 +17,7 @@ public class InvoiceController : ControllerBase
     public async Task<IActionResult> DownloadInvoice(string document, string year, string month, string day, string invoiceId)
     {
         var fileKey = $"{document}/{year}/{month}/{day}/{invoiceId}";
-        var bucketName = Environment.GetEnvironmentVariable("INVOICES_BUCKET_NAME");
+        var bucketName = "notas-fiscais-emitidas-marcelo";
         var fileName = fileKey.Replace("/", "-");
 
         var file = await _storageService.Download(bucketName, fileKey);
