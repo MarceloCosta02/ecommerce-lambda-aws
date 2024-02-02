@@ -5,6 +5,7 @@ using AprovarPedidoLambda.Interfaces.Services;
 using AprovarPedidoLambda.Repositories;
 using AprovarPedidoLambda.Services;
 using Microsoft.Extensions.DependencyInjection;
+using Amazon.SQS;
 
 namespace AprovarPedidoLambda.Configuration;
 
@@ -18,6 +19,8 @@ public static class DependencyInjectionConfig
         _serviceCollection.AddScoped<IOrderRepository, OrderRepository>();
         _serviceCollection.AddScoped<IDynamoDBContext, DynamoDBContext>();
         _serviceCollection.AddScoped<IAmazonDynamoDB, AmazonDynamoDBClient>();
+        _serviceCollection.AddScoped<IMessageService, MessageService>();
+        _serviceCollection.AddScoped<IAmazonSQS, AmazonSQSClient>();
 
         return _serviceCollection.BuildServiceProvider();
     }
